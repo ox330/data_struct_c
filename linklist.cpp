@@ -152,28 +152,55 @@ LinkList List_TailInsert(LinkList &L){
   // }user;
   // user u;
   // scanf("%s %d",u.name,&u.age);
-  int x;
-  InitLinkList(L);
+  int x=0;
+  L=(LinkList)malloc(sizeof(LNode));
+  // InitLinkList(L);
   LNode *s,*r=L;
-  scanf("%d",&x);
+  scanf("请输入插入的值：%d",&x);
   while(x!=9999){
-    InsertNextNode(r,x);
+    // InsertNextNode(r,x);
+    s=(LNode *)malloc(sizeof(LNode));
+    s->data=x;
+    r->next=s;
     r=s;
-    scanf("%d",&x);
+    scanf("请继续输入插入的值：%d",&x);
   }
   r->next=NULL;
+  LNode *u=L;
+  while(u->next!=NULL){
+      printf("%d ",u->data);
+      u=u->next;
+  }
+  return L;
+}
+
+// 单链表头插法
+LinkList List_HeadInsert(LinkList &L){
+  LNode *s;
+  int x;
+  L->next=NULL;
+  scanf("请输入插入的值：%d",&x);
+  while(x!=9999){
+    s=(LNode *)malloc(sizeof(LNode));
+    s->data=x;
+    s->next=L->next;
+    L->next=s;
+    scanf("请继续输入插入的值：%d",&x);
+  }
   return L;
 }
 
 
 int main(){
     LNode *L;
+    // 尾插法创建单链表
+    // List_TailInsert(L);
     InitLinkList(L);
     for(int i=1;i<5;i++)
       ListInsert(L,i,i);
     LNode *s=GetElem(L,4);
     int e=0;
-    LNode *p=L;
+    LNode *p=L->next;
     while(p!=NULL){
         printf("%d ",p->data);
         p=p->next;
@@ -181,35 +208,34 @@ int main(){
     printf("\n");
     printf("获取第4位元素值：%d\n",s->data);
     printf("在位序为4的结点后插入5，插入结果：%d\n",InsertNextNode(s,5));
-    LNode *k=L;
+    LNode *k=L->next;
     while(k!=NULL){
         printf("%d ",k->data);
         k=k->next;
     }
     printf("\n");
     printf("在位序为4的结点前插入5，插入结果：%d\n",InsertPriorNode(s,5));
-    LNode *w=L;
+    LNode *w=L->next;
     while(w!=NULL){
         printf("%d ",w->data);
         w=w->next;
     }
     printf("\n");
-    int x=0;
-    printf("删除位序为5的结点，删除结果：%d，",ListDelete(L,5,x));
-    printf("刪除的值：%d\n",x);
-    LNode *r=L;
-    while(r!=NULL){
-        printf("%d ",r->data);
-        r=r->next;
-    }
-    printf("\n");
-
-    printf("删除指定结点，删除结果：%d，\n",DeleteNode(s));
-    LNode *u=L;
-    while(u!=NULL){
-        printf("%d ",u->data);
-        u=u->next;
-    }
+    // int x=0;
+    // printf("删除位序为5的结点，删除结果：%d，",ListDelete(L,5,x));
+    // printf("刪除的值：%d\n",x);
+    // LNode *r=L;
+    // while(r!=NULL){
+    //     printf("%d ",r->data);
+    //     r=r->next;
+    // }
+    // printf("\n");
+    // printf("删除指定结点，删除结果：%d，\n",DeleteNode(s));
+    // LNode *u=L;
+    // while(u!=NULL){
+    //     printf("%d ",u->data);
+    //     u=u->next;
+    // }
     
     return 0;
 }
