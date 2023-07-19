@@ -190,37 +190,51 @@ LinkList List_HeadInsert(LinkList &L){
   return L;
 }
 
+void PrintList(LinkList L){
+  LNode *k=L->next;
+  printf("链表元素如下：\n");
+  while(k!=NULL){
+      printf("%d ",k->data);
+      k=k->next;
+  }
+  printf("\n");
+
+}
 
 int main(){
     LNode *L;
+    L=List_TailInsert(L);
+    PrintList(L);
+    L=List_HeadInsert(L);
+    PrintList(L);
     // 尾插法创建单链表
     // List_TailInsert(L);
-    InitLinkList(L);
-    for(int i=1;i<5;i++)
-      ListInsert(L,i,i);
-    LNode *s=GetElem(L,4);
-    int e=0;
-    LNode *p=L->next;
-    while(p!=NULL){
-        printf("%d ",p->data);
-        p=p->next;
-    }
-    printf("\n");
-    printf("获取第4位元素值：%d\n",s->data);
-    printf("在位序为4的结点后插入5，插入结果：%d\n",InsertNextNode(s,5));
-    LNode *k=L->next;
-    while(k!=NULL){
-        printf("%d ",k->data);
-        k=k->next;
-    }
-    printf("\n");
-    printf("在位序为4的结点前插入5，插入结果：%d\n",InsertPriorNode(s,5));
-    LNode *w=L->next;
-    while(w!=NULL){
-        printf("%d ",w->data);
-        w=w->next;
-    }
-    printf("\n");
+    // InitLinkList(L);
+    // for(int i=1;i<5;i++)
+    //   ListInsert(L,i,i);
+    // LNode *s=GetElem(L,4);
+    // int e=0;
+    // LNode *p=L->next;
+    // while(p!=NULL){
+    //     printf("%d ",p->data);
+    //     p=p->next;
+    // }
+    // printf("\n");
+    // printf("获取第4位元素值：%d\n",s->data);
+    // printf("在位序为4的结点后插入5，插入结果：%d\n",InsertNextNode(s,5));
+    // LNode *k=L->next;
+    // while(k!=NULL){
+    //     printf("%d ",k->data);
+    //     k=k->next;
+    // }
+    // printf("\n");
+    // printf("在位序为4的结点前插入5，插入结果：%d\n",InsertPriorNode(s,5));
+    // LNode *w=L->next;
+    // while(w!=NULL){
+    //     printf("%d ",w->data);
+    //     w=w->next;
+    // }
+    // printf("\n");
     // int x=0;
     // printf("删除位序为5的结点，删除结果：%d，",ListDelete(L,5,x));
     // printf("刪除的值：%d\n",x);
@@ -236,6 +250,5 @@ int main(){
     //     printf("%d ",u->data);
     //     u=u->next;
     // }
-    
     return 0;
 }
